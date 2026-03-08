@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/chandana-s-digital-edge/',
   server: {
     host: "::",
     port: 8080,
@@ -18,4 +19,14 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['dompurify'],
+      output: {
+        globals: {
+          dompurify: 'DOMPurify'
+        }
+      }
+    }
+  }
 }));
